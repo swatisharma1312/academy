@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="biography">
+    <t t-call="web.layout">
+      <t t-set="title">Academy</t>
+      <div class="oe_structure"/>
+      <div class="oe_structure">
+        <div class="container">
+          <h3>
+            <t t-esc="person.name"/>
+            <p>Last modified: <i t-field="person.write_date" t-options='{"widget": "relative"}'/></p>
+            <t t-esc="person.biography"/>
+          </h3>
+        </div>
+      </div>
+      <div class="oe_structure"/>
+    </t>
+  </template>
+
+  <template id="index" name="Academy Student"> <!-- in place of template id -->
+    <t t-call="web.layout">
+      <div class="oe_structure">
+        <div class="oe_structure"/>
+        <div class="container">
+          <h3>Student list</h3>
+          <table>
+            <tbody>
+              <t t-foreach="students" t-as="student">
+                <p>
+                  <tr>
+                    <td>
+                      <a t-attf-href="/academy/{{ slug(student) }}">
+                        <h3>
+                          <t t-esc="student.name"></t>
+                        </h3>
+                      </a>
+                    </td>
+                  </tr>
+                </p>
+              </t>
+
+            </tbody>
+          </table>
+          <div class="oe_structure"/>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

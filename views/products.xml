@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_product_note">
+      <field name="name">product_note_tree</field>
+      <field name="model">product.note</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="details"/>
+          <field name="product_id"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_product_note_form">
+      <field name="name">product_note_form</field>
+      <field name="model">product.note</field>
+      <field name="arch" type="xml">
+        <form>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="details" style="text-transform:capitalize;"/>
+                <field name="product_id"/>
+
+              </group>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record id="product_note_action" model="ir.actions.act_window">
+      <field name="name">Product</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.note</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add new student
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="product_note_root"
+              name="Products"
+              parent="academy_root"
+              sequence="10"/>
+
+    <menuitem id="product_note"
+              name="Product"
+              parent="product_note_root"
+              action="product_note_action"
+              sequence="10"/>
+
+
+  </data>
+</odoo>

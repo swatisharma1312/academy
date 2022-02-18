@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_academy_management_list">
+      <field name="name">teacher_management_tree</field>
+      <field name="model">academy.teacher</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <!--          <field name="course_ids"/>-->
+          <field name="teacher_name"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_patient_management_form">
+      <field name="name">academy_management_form</field>
+      <field name="model">academy.teacher</field>
+      <field name="arch" type="xml">
+        <form>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="name" style="text-transform:capitalize;"/>
+                <field name="teacher_name"/>
+                <!--                <field name="course_ids"/>-->
+
+              </group>
+
+            </group>
+            <notebook>
+              <page string="Student Info">
+                <field name="course_ids">
+                  <tree>
+                    <field name="name"/>
+                    <field name="course"/>
+                  </tree>
+                  <form>
+                    <group>
+                      <field name="name"/>
+                      <field name="course"/>
+                    </group>
+                  </form>
+                </field>
+
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids"/>
+            <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="academy_teacher_action" model="ir.actions.act_window">
+      <field name="name">Teacher</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">academy.teacher</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add new teacher
+        </p>
+      </field>
+    </record>
+
+
+    <menuitem id="academy_teacher"
+              name="Teacher"
+              parent="academy_student_root"
+              action="academy_teacher_action"
+              sequence="10"/>
+
+
+  </data>
+</odoo>

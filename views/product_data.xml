@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_product_data">
+      <field name="name">product_data_tree</field>
+      <field name="model">product.data</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="p_category"/>
+          <field name="category"/>
+          <field name="sku"/>
+          <field name="p_price"/>
+          <field name="description"/>
+          <field name="publish"/>
+          <field name="product_id"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_product_data_form">
+      <field name="name">product_data_form</field>
+      <field name="model">product.data</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+             <button name="button_publish" string="Product Publish" class="btn-primary"
+                    type="object" />
+             <button name="button_create" string="Product Create" class="btn-primary"
+                    type="object" states="draft"  />
+             <field name="state" widget="statusbar"
+                   status_visible="draft,product_created" readonly="1"/>
+
+          </header>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="p_category"/>
+                <field name="category"/>
+                <field name="p_price"/>
+              </group>
+              <group>
+                <field name="sku"/>
+                <field name="description"/>
+                <field name="publish"/>
+                <field name="product_id"/>
+
+              </group>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+    <record id="product_data_action" model="ir.actions.act_window">
+      <field name="name">Product</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">product.data</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Add new student
+        </p>
+      </field>
+    </record>
+
+
+    <menuitem id="product_data"
+              name="Product Data"
+              parent="product_note_root"
+              action="product_data_action"
+              sequence="10"/>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="description_add" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='product_details']" position="inside">
+<!--            <p>HELLO</p>-->
+           <b style="color:blue;">Description:</b> <b itemprop="description" t-field="product.description">Description</b>
+        </xpath>
+    </template>
+</odoo>
+
+
